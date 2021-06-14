@@ -37,3 +37,30 @@ var studenti = [
 for (var i = 0; i < studenti.length; i++) {
     document.getElementById('output2').innerHTML += studenti[i].nome + ' ' + studenti[i].cognome + '<br>';
 }
+
+// Dare la possibilità all’utente, attraverso 3 prompt(), di aggiungere un nuovo oggetto studente inserendo nell’ordine: nome, cognome e età.
+
+var nomeUser = prompt('dammi il nome del nuovo studente');
+var cognomeUser = prompt('dammi il cognome del nuovo studente');
+var etaUser = parseInt(prompt('dammi l\'età dello studente'));
+
+var newStudente = {
+    nome : nomeUser,
+    cognome : cognomeUser,
+    età : etaUser
+};
+
+// pusho il nuovo studente 
+studenti.push(newStudente);
+
+// stampo tutti gli studenti compreso quello nuovo 
+for (var i = 0; i < studenti.length; i++) {
+    for(var k in studenti[i]) {
+            if (k == 'età') {
+                document.getElementById('output3').innerHTML += k + ' ' + studenti[i][k] + '<br>' + '<br>';
+            } else {
+                document.getElementById('output3').innerHTML += k + ' ' + studenti[i][k] + '<br>';
+            }
+    }
+}
+document.getElementById('titolo').innerHTML = 'TUTTI GLI STUDENTI';
