@@ -39,10 +39,39 @@ for (var i = 0; i < studenti.length; i++) {
 }
 
 // Dare la possibilità all’utente, attraverso 3 prompt(), di aggiungere un nuovo oggetto studente inserendo nell’ordine: nome, cognome e età.
+var nameU = true;
+while (nameU) {
+    var nomeUser = prompt('dammi il nome del nuovo studente');
+    if (!isNaN(nomeUser)) {
+        alert('il nome non puo essere un numero');
+    } else if (nomeUser.length < 3){
+        alert('la lunghezza minima consentita è 3 caratteri');
+    } else {
+        nameU = false;
+    }
+}
+var cognomeU = true;
+while (cognomeU) {
+    var cognomeUser = prompt('dammi il cognome del nuovo studente');
+    if (!isNaN(cognomeUser)) {
+        alert('il cognome non puo essere un numero');
+    } else if (cognomeUser.length < 3){
+        alert('la lunghezza minima consentita è 3 caratteri');
+    } else {
+        cognomeU = false;
+    }
+}
+var etaU = true;
+while (etaU) {
+    var etaUser = parseInt(prompt('dammi l\'età dello studente'));
+    if (isNaN(etaUser)) {
+        alert('l\'eta non puo avere delle lettere');
+    } else {
+        etaU = false;
+    }  
+    console.log(etaUser.length);
+}
 
-var nomeUser = prompt('dammi il nome del nuovo studente');
-var cognomeUser = prompt('dammi il cognome del nuovo studente');
-var etaUser = parseInt(prompt('dammi l\'età dello studente'));
 
 var newStudente = {
     nome : nomeUser,
@@ -57,9 +86,9 @@ studenti.push(newStudente);
 for (var i = 0; i < studenti.length; i++) {
     for(var k in studenti[i]) {
             if (k == 'età') {
-                document.getElementById('output3').innerHTML += k + ' ' + studenti[i][k] + '<br>' + '<br>';
+                document.getElementById('output3').innerHTML += k + ' : ' + studenti[i][k] + '<br>' + '<br>';
             } else {
-                document.getElementById('output3').innerHTML += k + ' ' + studenti[i][k] + '<br>';
+                document.getElementById('output3').innerHTML += k + ' : ' + studenti[i][k] + '<br>';
             }
     }
 }
