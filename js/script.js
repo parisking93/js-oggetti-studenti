@@ -69,7 +69,6 @@ while (etaU) {
     } else {
         etaU = false;
     }  
-    console.log(etaUser.length);
 }
 
 
@@ -85,11 +84,49 @@ studenti.push(newStudente);
 // stampo tutti gli studenti compreso quello nuovo 
 for (var i = 0; i < studenti.length; i++) {
     for(var k in studenti[i]) {
+
             if (k == 'età') {
                 document.getElementById('output3').innerHTML += k + ' : ' + studenti[i][k] + '<br>' + '<br>';
             } else {
+                studenti[i][k] = cap(studenti[i][k]);
                 document.getElementById('output3').innerHTML += k + ' : ' + studenti[i][k] + '<br>';
             }
     }
 }
 document.getElementById('titolo').innerHTML = 'TUTTI GLI STUDENTI';
+
+
+
+
+
+
+
+
+
+function cap(string) {
+    var arr = [];
+    var stringa = '';
+    // controllo se è una parola o piu parole 
+    if (string.includes(' ')){
+        string += ' ';
+        
+        // se sono piu parole le divido inserendole in un array 
+        for( var i = 0; i < string.length; i++) {
+            if (string[i] == ' ') {
+                arr.push(string.substring(0,i))
+                string = string.substring(++i,string.length);
+                i = 0;
+            }
+        }
+    } else {
+        // se è una parola la capitalizzo 
+        stringa = string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    }
+
+    // capitalizzo ogni singola parola dell'array e poi riformo la stringa di input
+    for (var i = 0; i < arr.length; i++) {
+        arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1).toLowerCase();
+        stringa += arr[i] + ' ';
+    }
+    return stringa;
+}
